@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Anchor, Facebook, Instagram, Youtube, Send } from 'lucide-react';
 
 interface FooterProps {
@@ -7,120 +8,101 @@ interface FooterProps {
   tagline?: string;
 }
 
-export function Footer({ companyName = 'AQUAMARINE', tagline = 'Ваши мечты на воде' }: FooterProps) {
+export const Footer: React.FC<FooterProps> = ({
+  companyName = 'AquaMarine',
+  tagline = 'Ваш надежный партнер в мире водных путешествий'
+}) => {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    catalog: [
-      { label: 'Моторные катера', href: '#' },
-      { label: 'Яхты', href: '#' },
-      { label: 'Спортивные лодки', href: '#' },
-      { label: 'Электро-катера', href: '#' },
-    ],
-    company: [
-      { label: 'О компании', href: '#about' },
-      { label: 'Сервис', href: '#' },
-      { label: 'Карьера', href: '#' },
-      { label: 'Блог', href: '#' },
-    ],
-    support: [
-      { label: 'Контакты', href: '#contacts' },
-      { label: 'FAQ', href: '#' },
-      { label: 'Доставка', href: '#' },
-      { label: 'Гарантия', href: '#' },
-    ],
-  };
-
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
-    { icon: Send, href: '#', label: 'Telegram' },
-  ];
-
   return (
-    <footer className="bg-slate-950 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center">
+    <footer className="bg-gradient-to-br from-sky-900 via-sky-800 to-cyan-900 text-white py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8 sm:mb-12">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <motion.div
+              className="flex items-center gap-3 mb-4 sm:mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-xl flex items-center justify-center">
                 <Anchor className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-white tracking-wider">{companyName}</span>
-            </a>
-            <p className="text-gray-400 mb-6 max-w-sm">{tagline}. Продажа и сервис премиальных катеров от ведущих мировых производителей.</p>
-            
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-gray-400 hover:bg-cyan-500/20 hover:text-cyan-400 transition-colors"
-                  aria-label={social.label}
+              <span className="text-2xl font-bold">{companyName}</span>
+            </motion.div>
+            <p className="text-cyan-200 mb-4 sm:mb-6">
+              {tagline}
+            </p>
+            <div className="flex gap-3 sm:gap-4">
+              {[Facebook, Instagram, Youtube, Send].map((Icon, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-10 h-10 sm:w-11 sm:h-11 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-cyan-500 transition-colors"
                 >
-                  <social.icon className="w-5 h-5" />
-                </a>
+                  <Icon className="w-5 h-5" />
+                </motion.a>
               ))}
             </div>
           </div>
 
-          {/* Catalog Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Каталог</h4>
-            <ul className="space-y-3">
-              {footerLinks.catalog.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-gray-400 hover:text-cyan-400 transition-colors">
-                    {link.label}
+            <h4 className="text-lg font-bold mb-4 sm:mb-6">Каталог</h4>
+            <ul className="space-y-2 sm:space-y-3">
+              {['Спортивные катера', 'Семейные катера', 'Рыболовные катера', 'Люксовые яхты', 'Запчасти'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-cyan-200 hover:text-white transition-colors">
+                    {item}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Компания</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-gray-400 hover:text-cyan-400 transition-colors">
-                    {link.label}
+            <h4 className="text-lg font-bold mb-4 sm:mb-6">Услуги</h4>
+            <ul className="space-y-2 sm:space-y-3">
+              {['Сервисное обслуживание', 'Страхование', 'Обучение', 'Хранение', 'Аренда'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-cyan-200 hover:text-white transition-colors">
+                    {item}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Support Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Поддержка</h4>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-gray-400 hover:text-cyan-400 transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+            <h4 className="text-lg font-bold mb-4 sm:mb-6">Контакты</h4>
+            <ul className="space-y-2 sm:space-y-3 text-cyan-200">
+              <li>г. Москва, Причал Северный</li>
+              <li>
+                <a href="tel:+78005553535" className="hover:text-white transition-colors">
+                  +7 (800) 555-35-35
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@aquamarine.ru" className="hover:text-white transition-colors">
+                  info@aquamarine.ru
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
+        <div className="border-t border-cyan-700/50 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-cyan-300 text-sm sm:text-base text-center sm:text-left">
             © {currentYear} {companyName}. Все права защищены.
           </p>
-          <div className="flex items-center gap-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-gray-400 transition-colors">Политика конфиденциальности</a>
-            <a href="#" className="text-gray-500 hover:text-gray-400 transition-colors">Условия использования</a>
+          <div className="flex gap-4 sm:gap-6 text-sm sm:text-base">
+            <a href="#" className="text-cyan-300 hover:text-white transition-colors">
+              Политика конфиденциальности
+            </a>
+            <a href="#" className="text-cyan-300 hover:text-white transition-colors">
+              Условия использования
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};

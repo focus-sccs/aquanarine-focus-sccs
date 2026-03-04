@@ -1,74 +1,68 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Award, Headphones, CreditCard, Wrench, Ship } from 'lucide-react';
+import { Shield, Wrench, CreditCard, Headphones, Truck, Award } from 'lucide-react';
 
 interface FeaturesProps {
   title?: string;
+  subtitle?: string;
 }
 
-const features = [
-  {
-    icon: Shield,
-    title: 'Гарантия качества',
-    description: 'Официальная гарантия от производителя до 5 лет на все катера',
-    color: 'from-cyan-500 to-blue-500',
-  },
-  {
-    icon: Award,
-    title: 'Сертифицированные дилеры',
-    description: 'Мы являемся официальным представителем ведущих мировых верфей',
-    color: 'from-purple-500 to-pink-500',
-  },
-  {
-    icon: Headphones,
-    title: 'Поддержка 24/7',
-    description: 'Круглосуточная техническая поддержка и консультации экспертов',
-    color: 'from-orange-500 to-red-500',
-  },
-  {
-    icon: CreditCard,
-    title: 'Гибкое финансирование',
-    description: 'Лизинг и кредитование на выгодных условиях от партнёрских банков',
-    color: 'from-green-500 to-emerald-500',
-  },
-  {
-    icon: Wrench,
-    title: 'Сервисное обслуживание',
-    description: 'Полный спектр услуг: от регламентных работ до капитального ремонта',
-    color: 'from-yellow-500 to-orange-500',
-  },
-  {
-    icon: Ship,
-    title: 'Доставка по России',
-    description: 'Доставка катера в любую точку страны специализированным транспортом',
-    color: 'from-blue-500 to-indigo-500',
-  },
-];
+export const Features: React.FC<FeaturesProps> = ({
+  title = 'Почему выбирают нас',
+  subtitle = 'Мы предоставляем полный комплекс услуг для вашего комфорта'
+}) => {
+  const features = [
+    {
+      icon: Shield,
+      title: 'Гарантия качества',
+      description: 'Официальная гарантия до 5 лет на все катера от производителя',
+    },
+    {
+      icon: Wrench,
+      title: 'Сервисное обслуживание',
+      description: 'Собственный сервисный центр с опытными механиками',
+    },
+    {
+      icon: CreditCard,
+      title: 'Выгодные условия',
+      description: 'Рассрочка 0% и кредитование от ведущих банков',
+    },
+    {
+      icon: Headphones,
+      title: 'Поддержка 24/7',
+      description: 'Консультация и техподдержка в любое время',
+    },
+    {
+      icon: Truck,
+      title: 'Доставка по России',
+      description: 'Бесплатная доставка до ближайшего водоёма',
+    },
+    {
+      icon: Award,
+      title: 'Сертификация',
+      description: 'Все катера сертифицированы по международным стандартам',
+    },
+  ];
 
-export function Features({ title = 'Почему выбирают нас' }: FeaturesProps) {
   return (
-    <section className="py-24 bg-slate-800 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+    <section id="features" className="py-16 sm:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">{title}</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-sky-900 mb-4 sm:mb-6">
+            {title}
+          </h2>
+          <p className="text-lg sm:text-xl text-sky-700 max-w-2xl mx-auto">
+            {subtitle}
+          </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -76,20 +70,22 @@ export function Features({ title = 'Почему выбирают нас' }: Fea
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group p-8 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all duration-300"
+              whileHover={{ y: -5 }}
+              className="group bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-xl shadow-cyan-500/10 border border-cyan-100"
             >
-              {/* Icon */}
-              <div className={`w-14 h-14 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                <feature.icon className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                <feature.icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
               </div>
-
-              {/* Content */}
-              <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-sky-900 mb-3 sm:mb-4">
+                {feature.title}
+              </h3>
+              <p className="text-sky-600 leading-relaxed">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
