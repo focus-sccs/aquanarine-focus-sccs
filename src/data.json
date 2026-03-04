@@ -1,0 +1,71 @@
+
+{
+  "content": [
+    {
+      "type": "Header",
+      "props": {
+        "id": "header-main-1",
+        "logo": "AQUAMARINE",
+        "phone": "+7 (495) 123-45-67",
+        "email": "info@aquamarine-boats.ru"
+      }
+    },
+    {
+      "type": "Hero",
+      "props": {
+        "id": "hero-main-1",
+        "title": "Премиальные катера вашей мечты",
+        "subtitle": "Откройте мир роскошных путешествий по воде. Мы предлагаем эксклюзивные катера от ведущих мировых производителей с полной гарантией и сервисом.",
+        "buttonText": "Смотреть каталог",
+        "backgroundImage": "https://images.pexels.com/photos/163236/luxury-yacht-boat-speed-water-163236.jpeg?auto=compress&cs=tinysrgb&w=1920"
+      }
+    },
+    {
+      "type": "FeaturedBoats",
+      "props": {
+        "id": "boats-main-1",
+        "title": "Популярные модели",
+        "subtitle": "Выберите идеальный катер из нашей коллекции премиум-класса"
+      }
+    },
+    {
+      "type": "Features",
+      "props": {
+        "id": "features-main-1",
+        "title": "Почему выбирают нас"
+      }
+    },
+    {
+      "type": "About",
+      "props": {
+        "id": "about-main-1",
+        "title": "О компании Aquamarine",
+        "description": "Мы — официальный дилер ведущих мировых верфей с 15-летним опытом работы. Наша команда экспертов поможет вам выбрать идеальный катер, организует доставку в любую точку России и обеспечит профессиональное сервисное обслуживание.",
+        "yearsCount": "15+",
+        "boatsCount": "500+",
+        "clientsCount": "1200+"
+      }
+    },
+    {
+      "type": "Contact",
+      "props": {
+        "id": "contact-main-1",
+        "title": "Свяжитесь с нами",
+        "address": "Москва, Причал Северный речной вокзал, д. 1",
+        "phone": "+7 (495) 123-45-67",
+        "email": "info@aquamarine-boats.ru",
+        "workingHours": "Пн-Вс: 9:00 - 20:00"
+      }
+    },
+    {
+      "type": "Footer",
+      "props": {
+        "id": "footer-main-1",
+        "companyName": "AQUAMARINE",
+        "tagline": "Ваши мечты на воде"
+      }
+    }
+  ],
+  "root": {},
+  "zones": {}
+}
